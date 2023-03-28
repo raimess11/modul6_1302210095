@@ -26,6 +26,9 @@ internal class Program
         video9.IncresePlayCount(95);
         SayaTubeVideo video10 = new SayaTubeVideo("Review Film asmr closeup iga bakar dustin oleh rahma");
         video10.IncresePlayCount(44);
+        SayaTubeVideo videojelek = new SayaTubeVideo("Review Film asmr closeup iga bakar dustin oleh rahma");
+        videojelek.IncresePlayCount(int.MaxValue);
+        videojelek.IncresePlayCount(-1);
 
         user1.AddVideo(video1);
         user1.AddVideo(video2);
@@ -38,6 +41,9 @@ internal class Program
         user1.AddVideo(video9);
         user1.AddVideo(video10);
 
+        user1.AddVideo(videojelek);
+        SayaTubeUser user2 = new SayaTubeUser(new string(new char[100]));
+        SayaTubeUser user3 = new SayaTubeUser(null);
 
 
         user1.PrintAllVideoPlayCount();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,11 @@ namespace modul6_1302210095
 
         public SayaTubeVideo(string title)
         {
+            try { Debug.Assert(title.Length <= 200, "maksimal karakter pada judul adalah 200"); }
+            catch(Exception e) { Console.WriteLine(e.Message); }
+            try { Debug.Assert(title != null, "judul tidak boleh null"); }
+            catch(Exception e) { Console.WriteLine(e.Message); }
+            
             Random random = new Random(DateTime.Now.Minute);
             this.Title = title;
             this.id = random.Next(10000, 99999);
@@ -25,7 +31,13 @@ namespace modul6_1302210095
 
         public void IncresePlayCount(int count)
         {
-            this.PlayCount += count;
+            try { Debug.Assert(count <= 25000000, "maksimal penambahan count adalah 25.000.000 per penambahan"); }
+            catch (Exception e) { Console.WriteLine(e.Message); }
+            try { Debug.Assert(count >= 0, "penambahan tidak boleh negatif"); }
+            catch (Exception e) { Console.WriteLine(e.Message); }
+
+            try { this.PlayCount = checked(this.PlayCount + count); }
+            catch(OverflowException e) { Console.WriteLine(e.Message); }
         }
         public void PrintVideoDetails()
         {
